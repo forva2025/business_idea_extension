@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Analyzer</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Business Opportunity Analyzer</h1>
+            <div id="status" class="status">Ready to analyze</div>
+            <button id="settings-toggle" class="settings-toggle">⚙️</button>
+        </header>
+
+        <div id="settings-section" class="section hidden">
+            <h3>Advanced Settings (Optional)</h3>
+            <p class="settings-note">The extension works out of the box. Add your own API key for unlimited usage.</p>
+            <input type="password" id="api-key" placeholder="Enter DeepSeek API Key (Optional)">
+            <button id="save-key">Save Key</button>
+            <button id="toggle-settings" class="toggle-btn">Show/Hide Settings</button>
+        </div>
+
+        <div class="section">
+            <button id="analyze-btn" class="primary-btn">
+                Analyze Current Page
+            </button>
+        </div>
+
+        <div id="results-section" class="section hidden">
+            <h3>Business Opportunities</h3>
+            <div id="business-ideas"></div>
+        </div>
+
+        <div id="startup-guide-section" class="section hidden">
+            <h3>Startup Guide</h3>
+            <div id="startup-guide"></div>
+        </div>
+
+        <div id="export-section" class="section hidden">
+            <button id="export-pdf" class="export-btn">Export as PDF</button>
+            <button id="export-csv" class="export-btn">Export as CSV</button>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Analyzing page and generating insights...</p>
+        </div>
+    </div>
+
+    <script src="../utils/export.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>

@@ -7,11 +7,12 @@ The Business Idea Extension is a Chrome browser extension designed to help users
 ## Features
 
 - **Webpage Analysis**: Automatically scans webpage content to extract relevant data for business idea generation.
-- **Idea Generation**: Uses intelligent algorithms to suggest business ideas based on the analyzed content.
+- **Idea Generation**: Uses intelligent algorithms and DeepSeek AI to suggest business ideas based on the analyzed content.
+- **Ready-to-Use**: Works immediately after installation - no API key required!
 - **Popup Interface**: Provides a user-friendly popup window for easy access to generated ideas.
 - **Export Functionality**: Allows users to export generated ideas in various formats for further use.
 - **Background Processing**: Runs in the background to minimize impact on browsing performance.
-- **Customizable Settings**: Users can adjust analysis parameters to suit their needs.
+- **Optional Customization**: Advanced users can add their own API key for unlimited usage.
 
 ## Installation
 
@@ -25,8 +26,22 @@ The Business Idea Extension is a Chrome browser extension designed to help users
 
 1. Navigate to any webpage in Chrome.
 2. Click on the Business Idea Extension icon in the browser toolbar.
-3. The popup window will display generated business ideas based on the current page's content.
+3. Click "Analyze Current Page" to generate business ideas.
 4. Use the export feature to save ideas for later reference.
+
+## Advanced Settings (Optional)
+
+For users who want unlimited usage or enhanced features:
+
+1. Click the ⚙️ settings icon in the extension popup
+2. Sign up for a DeepSeek account at [https://platform.deepseek.com](https://platform.deepseek.com)
+3. Generate an API key from your account dashboard
+4. Enter your API key in the settings section
+5. Click "Save Key" to store it securely
+
+**Note**: The extension works perfectly without an API key using built-in analysis, but with your own DeepSeek API key, you'll get unlimited usage and enhanced AI-powered insights.
+
+
 
 ## Architecture
 
@@ -51,8 +66,9 @@ The extension is structured as follows:
 The extension requires the following permissions:
 
 - `activeTab`: To access the content of the currently active tab.
-- `storage`: To store user preferences and generated ideas.
+- `storage`: To store user preferences, generated ideas, and DeepSeek API key.
 - `tabs`: To interact with browser tabs.
+- `scripting`: To inject content scripts for page analysis.
 
 ## Contributing
 
