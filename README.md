@@ -1,5 +1,7 @@
 # Business Idea Extension
 
+![Business Idea Extension Icon](assets/icon128.png)
+
 ## Overview
 
 The Business Idea Extension is a Chrome browser extension designed to help users discover potential business opportunities while browsing the web. By analyzing the content of any webpage, the extension identifies patterns, trends, and gaps that could inspire new business ideas or improvements to existing ones.
