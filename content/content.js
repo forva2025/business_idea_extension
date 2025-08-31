@@ -1,4 +1,7 @@
-class PageAnalyzer {
+// Check if PageAnalyzer already exists to prevent duplicate declaration
+if (typeof window.PageAnalyzer === 'undefined' && !window.businessIdeaExtensionLoaded) {
+  window.businessIdeaExtensionLoaded = true; // Mark as loaded
+  window.PageAnalyzer = class PageAnalyzer {
     constructor() {
       this.pageData = {};
     }
@@ -144,13 +147,16 @@ class PageAnalyzer {
       
       return technologies;
     }
-  }
-  
-  // Listen for messages from popup
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  };
+} // Close the if statement
+
+// Listen for messages from popup (only if not already added)
+if (!window.businessIdeaExtensionMessageListenerAdded) {
+  window.businessIdeaExtensionMessageListenerAdded = true;
+  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'analyzeCurrentPage') {
     try {
-      const analyzer = new PageAnalyzer();
+      const analyzer = new window.PageAnalyzer();
       const pageData = analyzer.extractPageContent();
       sendResponse({ success: true, data: pageData });
     } catch (error) {
@@ -162,7 +168,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     sendResponse({ success: true, message: 'Content script is alive!' });
   }
   return true; // Keep the message channel open for async response
-});
+  });
+} // Close the if statement for message listener
 
 // Notify that content script is loaded
 console.log('Business Idea Extension content script loaded');
@@ -170,7 +177,7 @@ console.log('Business Idea Extension content script loaded');
 // Add error handling for content script initialization
 try {
   // Test if the content script is working properly
-  if (typeof PageAnalyzer !== 'undefined') {
+  if (typeof window.PageAnalyzer !== 'undefined') {
     console.log('PageAnalyzer class loaded successfully');
   } else {
     console.error('PageAnalyzer class not found');

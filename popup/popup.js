@@ -134,8 +134,23 @@ class PopupController {
     createBusinessIdeaElement(idea, index) {
       const div = document.createElement('div');
       div.className = 'business-idea';
+      
+      // Add profitability badge if available
+      const profitabilityBadge = idea.profitability ? 
+        `<div class="profitability-badge ${idea.profitability.toLowerCase().replace(' ', '-')}">${idea.profitability} Profit</div>` : '';
+      
+      // Add source badge
+      const sourceBadge = idea.source ? 
+        `<div class="source-badge">${idea.source}</div>` : '';
+      
       div.innerHTML = `
-        <h4 onclick="popupController.showStartupGuide(${index})">${idea.name}</h4>
+        <div class="idea-header">
+          <h4 onclick="popupController.showStartupGuide(${index})">${idea.name}</h4>
+          <div class="badges">
+            ${profitabilityBadge}
+            ${sourceBadge}
+          </div>
+        </div>
         <p>${idea.description}</p>
         
         <div class="idea-meta">
@@ -157,7 +172,7 @@ class PopupController {
           </div>
           <div class="meta-item">
             <div class="meta-label">Investment</div>
-            <div>${idea.investment}</div>
+            <div class="investment-amount">${idea.investment}</div>
           </div>
           <div class="meta-item">
             <div class="meta-label">Time to Customer</div>
